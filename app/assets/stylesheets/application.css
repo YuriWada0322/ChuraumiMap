@@ -56,3 +56,21 @@
 #footer p {
   margin: 0;
 }
+
+/* flash message */
+.toast {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.notice {
+  background-color: #49ac49;
+  color: #fff;
+  padding: 10px;
+}
+
+.alert {
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+}

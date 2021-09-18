@@ -1,7 +1,12 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 <% @posts.each do |post| %>
 
 <p><%= post.content %></p>
 
+  <% if post.images.attached? %>
+    <div class="images">
+      <% post.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
