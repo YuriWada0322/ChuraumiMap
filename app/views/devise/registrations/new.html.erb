@@ -4,8 +4,15 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :username, "ユーザー名" %><br />
+    <i class="fas fa-user"></i>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "ユーザー名" %>
+  </div>
+  
+  <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <i class="fas fa-envelope"></i>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
   </div>
 
   <div class="field">
@@ -13,12 +20,14 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上で入力)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <i class="fas fa-lock"></i>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "パスワード確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <i class="fas fa-lock"></i>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワード" %>
   </div>
 
   <div class="actions">

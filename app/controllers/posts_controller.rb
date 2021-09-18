@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,8 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    
-    
   end
 
   def new
@@ -15,7 +14,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def create
@@ -45,13 +43,11 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(
-      :content, images: []
-    )
-  end
-
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:content, :images [])
   end
 end

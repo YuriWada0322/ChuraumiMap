@@ -1,12 +1,17 @@
 <div id = "header">
   <div class="logo">
-    <a href="/">ロゴ</a>
+    <%= link_to root_path do %>
+      <h1 class="title is-4" style="font-family: cursive;">Churaumi MAP</h1>
+    <% end %>
   </div>
   <div class="link">
     <ul id = "nav">
       <% if user_signed_in? %>
         <li>
           <%= link_to "投稿する", new_post_path %>
+        </li>
+        <li>
+          <%= link_to "マイページ", users_path %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
