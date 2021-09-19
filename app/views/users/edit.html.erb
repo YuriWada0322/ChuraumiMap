@@ -1,2 +1,13 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<%= form_with model: @user do |form|  %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+
+  <%= form.label :profile %>
+  <%= form.text_field :profile %>
+
+  <%= form.submit %>
+<% end %>

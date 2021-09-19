@@ -1,0 +1,15 @@
+<%= @post.user.username %>
+<p><%= @post.title %></p>
+<p><%= simple_format @post.content %></p>
+
+  <% if @post.images.attached? %>
+    <div class="images">
+      <% @post.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    </div>
+  <% end %>
+
+<% if @post.user.id == current_user.id %>
+  <%= link_to "編集画面へ", edit_post_path %>
+<% end %>

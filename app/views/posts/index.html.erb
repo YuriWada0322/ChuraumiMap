@@ -1,0 +1,12 @@
+<% @posts.each do |post| %>
+
+  <% if post.images.attached? %>
+    <div class="images">
+      <% post.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    </div>
+  <% end %>
+  <p><%= post.user.title %></p>
+  <p><%= post.updated_at.strftime("%Y-%m-%d") %></p>
+<% end %>

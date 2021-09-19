@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to root_path, notice: "投稿完了です！"
     else
@@ -42,12 +43,11 @@ class PostsController < ApplicationController
   end
 
   private
-
   def find_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:content, :images [])
+    params.require(:post).permit(:title, :content, images:[])
   end
 end

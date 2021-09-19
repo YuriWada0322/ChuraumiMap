@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-
+<p><%= post.title %></p>
 <p><%= post.content %></p>
 
   <% if post.images.attached? %>
