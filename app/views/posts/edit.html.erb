@@ -1,10 +1,37 @@
-<h1>投稿を編集する</h1>
-<div>
-  <%= form_with model: @post do |form|  %>
-    <%= form.label :title, "ビーチ名" %>
-    <%= form.text_field :title %>
-    <%= form.text_area :content, rows: 5 %>
-    <%= form.file_field :images, multiple: true %><br>
-    <%= form.submit %>
-  <% end %>
-</div>
+<% if @post.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_with model: @post do |form|  %>
+          <div class="field">
+            <%= form.label :title, "ビーチ名", class: "label"  %>
+            <%= form.text_field :title, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= form.label :content, "おすすめポイント", class: "label"  %>
+            <%= form.text_area :content, class: "textarea" %>
+          </div>
+
+          <div class="field">
+            <%= form.label :images, "Photo", class: "label" %>
+            <%= form.file_field :images, multiple: true, class: "input" %>
+          </div>
+        
+          <%= form.submit "更新する", class: "button is-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

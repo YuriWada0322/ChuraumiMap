@@ -1,2 +1,102 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<section class="navbar is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        プロフィール
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+              <% if @user.image.attached? %>
+                <%= image_tag @user.image %>
+              <% end %>
+            </figure>
+          </div>
+          <div class="column is-8">
+            <table class="table is-fullwidth">
+              <tr>
+                <td class="is-size-4">
+                  <strong><%= @user.username %></strong>
+                </td>
+                <% if @user.id == current_user.id %>
+                <td class="is-size-4">
+                  <%= @user.email %>
+                </td>
+                <td>
+                    <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+                </td>
+                <% end %>
+              </tr>
+            </table>
+            <table class="table is-fullwidth">
+              <tr>
+                <td>
+                  <%= @user.profile %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @user.posts.each do |post| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to post_path do %>
+                  <% if post.images.attached? %>
+                    <div class="images">
+                      <% post.images.each do |image| %>
+                        <%= image_tag image %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <%= link_to post_path, class: "panel-block" do %>
+                  <% end %>
+                  <% if @user.id == current_user.id %>
+                    <%= link_to edit_post_path, class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-edit"></i>
+                      </span>
+                      編集
+                    <% end %>
+                    <%= link_to post_path, method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                      <span class="panel-icon">
+                        <i class="fas fa-trash"></i>
+                      </span>
+                      削除
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="content">
+                <time><%= post.updated_at.strftime("%Y-%m-%d") %></time>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

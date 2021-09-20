@@ -1,13 +1,41 @@
-<% @posts.each do |post| %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @posts.each do |post| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to post_path(post) do %>
+                  <% if post.images.attached? %>
+                    <div class="images">
+                      <% post.images.each do |image| %>
+                        <%= image_tag image %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title"><%=link_to post.user.username, user_path(post.user) %></div>
+                </div>
+              </div>
 
-  <% if post.images.attached? %>
-    <div class="images">
-      <% post.images.each do |image| %>
-        <%= image_tag image %>
+              <div class="content">
+                <time><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
-  <% end %>
-  <p><%= post.user.username %></p>
-  <p><%= post.title %></p>
-  <p><%= post.updated_at.strftime("%Y-%m-%d") %></p>
-<% end %>
+  </div>
+</section>
