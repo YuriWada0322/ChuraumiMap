@@ -73,6 +73,10 @@
               <div class="media">
                 <div class="media-content">
                   <%= link_to post_path, class: "panel-block" do %>
+                    <span class="panel-icon">
+                      <i class="fas fa-anchor" aria-hidden="true"></i>
+                    </span>
+                    <%= post.title %>
                   <% end %>
                   <% if @user.id == current_user.id %>
                     <%= link_to edit_post_path, class: "panel-block" do %>

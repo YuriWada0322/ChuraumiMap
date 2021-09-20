@@ -40,11 +40,11 @@
       <div class="column is-4">
         <article class="panel is-link">
           <p class="panel-heading">
-            ビーチ紹介
+            <%= @post.title %>
           </p>
           <div class="panel-block">
             <p class="control">
-              <%= @post.user.profile %>
+              <%= @post.address %>
             </p>
           </div>
           <%= link_to user_path(@post.user), class: "panel-block" do %>

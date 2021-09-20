@@ -38,28 +38,6 @@
   margin: 0;
 }
 
-/* flash message */
-.toast {
-  margin: 10px 0;
-  text-align: center;
-}
-
-.notice {
-  background-color: #485fc7;
-  color: #fff;
-  padding: 10px;
-}
-
-.alert {
-  background-color: red;
-  color: #fff;
-  padding: 10px;
-}
-
-.notification:not(:last-child){
-	margin-bottom: 0;
-}
-
 .profile_image {
  border-radius: 50%;
 }
