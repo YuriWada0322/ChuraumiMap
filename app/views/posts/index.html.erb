@@ -19,16 +19,18 @@
             </div>
             <div class="card-content">
               <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    
-                  </figure>
-                </div>
                 <div class="media-content">
-                  <div class="title"><%=link_to post.user.username, user_path(post.user) %></div>
+                  <div class="title"><%=link_to post.title, post_path(post) %></div>
                 </div>
               </div>
-
+              <div class="media-left">
+                <figure class="image is-50x50">
+                    
+                </figure>
+              </div>
+              <div class="content">
+                <%=link_to post.user.username, user_path(post.user) %>
+              </div>
               <div class="content">
                 <time><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
