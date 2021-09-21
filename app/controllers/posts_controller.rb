@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,8 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    
-    
   end
 
   def new
@@ -15,13 +14,16 @@ class PostsController < ApplicationController
   end
 
   def edit
-    
+    if @post.user != current_user
+      redirect_to post_path(@post), alert: "不正なアクセスです"
+    end
   end
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
-      redirect_to root_path, notice: "投稿完了です！"
+      redirect_to post_path(@post), notice: "投稿完了です！"
     else
       render :new
     end
@@ -29,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to root_path, notice: "投稿を更新しました！"
+      redirect_to post_path(@post), notice: "投稿を更新しました！"
     else
       render :edit
     end
@@ -44,14 +46,11 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def post_params
-    params.require(:post).permit(
-      :content, images: []
-    )
-  end
-
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :address, :content, images:[])
   end
 end
