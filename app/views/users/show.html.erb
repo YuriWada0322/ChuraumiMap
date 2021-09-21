@@ -1,13 +1,3 @@
-<section class="navbar is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        プロフィール
-      </h1>
-    </div>
-  </div>
-</section>
-
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -16,7 +6,7 @@
           <div class="column is-4">
             <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
               <% if @user.image.attached? %>
-                <%= image_tag @user.image %>
+                <%= image_tag @user.image, class: "profile_image is-rounded" %>
               <% end %>
             </figure>
           </div>
@@ -54,7 +44,7 @@
   <div class="container">
     <div class="columns is-multiline">
       <% @user.posts.each do |post| %>
-        <div class="column is-4">
+        <div class="column is-3">
           <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">

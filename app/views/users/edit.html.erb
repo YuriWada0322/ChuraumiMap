@@ -24,7 +24,7 @@
   <section class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <%= form_with model: @user do |form|  %>
+        <%= form_with model: @user, local: true do |form| %>
           <div class="field">
             <%= form.label :username, "ユーザー名", class: "label" %>
             <%= form.text_field :username, class: "input" %>
